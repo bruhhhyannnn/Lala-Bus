@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1084212993683",
+    "project_id": "lala-bus",
+    "storage_bucket": "lala-bus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084212993683:android:799ee396fa86f5b0ae3766",
+        "android_client_info": {
+          "package_name": "com.example.lala_bus"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqLwI20gQgXAKlKd-Sl3EvSsSEhcRqxlk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
