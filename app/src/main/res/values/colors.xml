@@ -2,4 +2,16 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Primary Color -->
+    <color name="primary_color_blue">#0D85D8</color>
+    <color name="primary_color_lighter_blue">#260D85D8</color>
+
+    <!-- Text Colors -->
+
+    <!-- Bottom Navigation Colors -->
+
+    <!-- General Colors -->
+    <color name="default_border_color_gray">#521B1F26</color>
+
 </resources>

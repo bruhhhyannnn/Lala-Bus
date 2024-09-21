@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Lala-Bus</string>
+
+    <!-- Bottom Navigation Bar -->
+    <string name="home">Home</string>
+    <string name="stations">Stations</string>
 </resources>
