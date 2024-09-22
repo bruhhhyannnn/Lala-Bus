@@ -5,6 +5,6 @@
         android:id="@+id/home"
         android:icon="@drawable/bottom_nav_bar_home"/>
     <item android:title="@string/stations"
-        android:id="@+id/station"
+        android:id="@+id/stations"
         android:icon="@drawable/bottom_nav_bar_station"/>
 </menu>

@@ -4,4 +4,6 @@
     <!-- Bottom Navigation Bar -->
     <string name="home">Home</string>
     <string name="stations">Stations</string>
+
+
 </resources>
