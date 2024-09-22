@@ -7,14 +7,9 @@ import androidx.fragment.app.Fragment
 import com.example.lala_bus.databinding.ActivityMainBinding
 import com.example.lala_bus.main_fragments.HomeFragment
 import com.example.lala_bus.main_fragments.StationFragment
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
 
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
 
@@ -25,9 +20,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         enableEdgeToEdge()
 
         // Code Start
-
-        val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
-        mapFragment?.getMapAsync(this)
 
         replaceFragment(HomeFragment()) // Main Start of the app is to go to Home Fragment
 
@@ -49,23 +41,5 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.main_frame_layout, fragment)
         fragmentTransaction.commit()
-    }
-
-    override fun onMapReady(map: GoogleMap) {
-        val latitudeLongitude = LatLng(18.057205, 120.548080)
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latitudeLongitude, 15f)) // not working
-        map.addMarker(com.google.android.gms.maps.model.MarkerOptions().position(latitudeLongitude).title("Marker")) // not working
-
-        // Possible Additions:
-        map.uiSettings.isZoomGesturesEnabled = true
-        map.uiSettings.isZoomControlsEnabled = true
-        map.uiSettings.isCompassEnabled = true
-        map.uiSettings.isRotateGesturesEnabled = true
-        map.uiSettings.isScrollGesturesEnabled = true
-        map.uiSettings.isTiltGesturesEnabled = true
-        map.uiSettings.isMyLocationButtonEnabled = true
-        map.uiSettings.isMapToolbarEnabled = true
-        map.uiSettings.isIndoorLevelPickerEnabled = true
-
     }
 }
