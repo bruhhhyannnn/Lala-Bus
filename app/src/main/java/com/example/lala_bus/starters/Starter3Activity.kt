@@ -8,15 +8,16 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.lala_bus.MainActivity
 import com.example.lala_bus.R
-import com.example.lala_bus.databinding.ActivityStarter1Binding
+import com.example.lala_bus.databinding.ActivityStarter3Binding
 
-class Starter1Activity : AppCompatActivity() {
+class Starter3Activity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityStarter1Binding
+    private lateinit var binding : ActivityStarter3Binding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityStarter1Binding.inflate(layoutInflater)
+        binding = ActivityStarter3Binding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -25,15 +26,10 @@ class Starter1Activity : AppCompatActivity() {
             insets
         }
 
-        // Skip Button (to go to authentication)
-        binding.skipButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
-        }
-
         // Continue Button
         binding.continueButton.setOnClickListener {
-            startActivity(Intent(this, Starter2Activity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }
