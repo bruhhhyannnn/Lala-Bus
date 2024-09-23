@@ -3,11 +3,15 @@
     <string name="app_name">Lala-Bus</string>
 
     <!-- DEFAULT STRINGS -->
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="privacy_policy">Privacy Policy</string>
 
     <!-- DEFAULT STRING BUTTONS -->
     <string name="skip_button">Skip</string>
     <string name="continue_button">Continue</string>
     <string name="start_button">Lets Get Started</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="sign_in_button">Sign In</string>
 
     <!-- UTILITIES -->
     <!-- Bottom Navigation Bar -->
@@ -33,8 +37,12 @@
     <!--    Starter 3 -->
     <string name="starter3_title">Plan Your Trip - Stay in Control of Your Time</string>
     <string name="starter3_description">See estimated arrival times and plan your trips in advance. Lala-Bus helps you avoid long waits by letting you know when the next bus will arrive.</string>
+    <!--    Start Now -->
+    <string name="start_now_title">Lets Get You Setup!</string>
+    <string name="start_now_description">Lets dive in into your account</string>
 
 
     <!-- PICTURES DESCRIPTION -->
-    <string name="starter_picture">Preview picture of the Lala-Bus APP</string>
+    <string name="app_logo_description">Lala-Bus Logo App</string>
+    <string name="starter_picture_description">Preview look picture of the Lala-Bus APP</string>
 </resources>

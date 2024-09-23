@@ -1,22 +1,20 @@
 package com.example.lala_bus.starters
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.lala_bus.R
-import com.example.lala_bus.databinding.ActivityStarter3Binding
+import com.example.lala_bus.databinding.ActivityStartNowBinding
 
-class Starter3Activity : AppCompatActivity() {
+class StartNowActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityStarter3Binding
-
+    private lateinit var binding : ActivityStartNowBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityStarter3Binding.inflate(layoutInflater)
+        binding = ActivityStartNowBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -25,10 +23,8 @@ class Starter3Activity : AppCompatActivity() {
             insets
         }
 
-        // Continue Button
-        binding.continueButton.setOnClickListener {
-            startActivity(Intent(this, StartNowActivity::class.java))
-            finish()
-        }
+        // Code
+
+
     }
 }

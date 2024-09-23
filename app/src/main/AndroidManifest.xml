@@ -15,6 +15,9 @@
         android:theme="@style/Theme.LalaBus"
         tools:targetApi="31">
         <activity
+            android:name=".starters.StartNowActivity"
+            android:exported="false" />
+        <activity
             android:name=".starters.Starter3Activity"
             android:exported="false" />
         <activity
