@@ -1,15 +1,40 @@
 <resources>
+    <!-- APP NAME -->
     <string name="app_name">Lala-Bus</string>
 
+    <!-- DEFAULT STRINGS -->
+
+    <!-- DEFAULT STRING BUTTONS -->
+    <string name="skip_button">Skip</string>
+    <string name="continue_button">Continue</string>
+    <string name="start_button">Lets Get Started</string>
+
+    <!-- UTILITIES -->
     <!-- Bottom Navigation Bar -->
     <string name="home">Home</string>
     <string name="stations">Stations</string>
 
-    <!-- DEFAULT STRINGS -->
+    <!-- MAIN -->
 
+
+    <!-- STATIONS -->
     <!-- Stations Fragment   -->
     <string name="hello">Hello,</string>
     <string name="today">Today:</string>
     <string name="user_name">{user_name}</string>
 
+    <!-- SPLASH ART & STARTERS -->
+    <!--    Starter 1 -->
+    <string name="starter1_title">Welcome to Lala-Bus - Your Convenience. Your Way</string>
+    <string name="starter1_description">Get ready to experience hassle-free transportation. We’ve got everything you need to travel with ease. Let’s get started!</string>
+    <!--    Starter 2 -->
+    <string name="starter2_title">Track Buses in Real-Time - Wherever You Are</string>
+    <string name="starter2_description">Say goodbye to long waits! With Lala-Bus, you can see exactly where your bus is on the map and how long it will take to reach your stop. </string>
+    <!--    Starter 3 -->
+    <string name="starter3_title">Plan Your Trip - Stay in Control of Your Time</string>
+    <string name="starter3_description">See estimated arrival times and plan your trips in advance. Lala-Bus helps you avoid long waits by letting you know when the next bus will arrive.</string>
+
+
+    <!-- PICTURES DESCRIPTION -->
+    <string name="starter_picture">Preview picture of the Lala-Bus APP</string>
 </resources>
