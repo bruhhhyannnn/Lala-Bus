@@ -1,5 +1,6 @@
 package com.example.lala_bus.starters
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
@@ -7,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.lala_bus.R
+import com.example.lala_bus.authentication.SignInActivity
+import com.example.lala_bus.authentication.SignUpActivity
 import com.example.lala_bus.databinding.ActivityStartNowBinding
 
 class StartNowActivity : AppCompatActivity() {
@@ -25,8 +28,10 @@ class StartNowActivity : AppCompatActivity() {
         }
 
         binding.signUpButton.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
         binding.signInButton.setOnClickListener {
+            startActivity(Intent(this, SignInActivity::class.java))
         }
         binding.termsOfServiceText.setOnClickListener {
             termsOfServiceDialog()
