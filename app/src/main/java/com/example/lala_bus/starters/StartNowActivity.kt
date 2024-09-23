@@ -2,6 +2,7 @@ package com.example.lala_bus.starters
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -23,8 +24,31 @@ class StartNowActivity : AppCompatActivity() {
             insets
         }
 
-        // Code
+        binding.signUpButton.setOnClickListener {
+        }
+        binding.signInButton.setOnClickListener {
+        }
+        binding.termsOfServiceText.setOnClickListener {
+            termsOfServiceDialog()
+        }
+        binding.privacyPolicyText.setOnClickListener {
+            privacyPolicyDialog()
+        }
+    }
 
+    private fun termsOfServiceDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Terms Of Service")
+        builder.setMessage("Lorem Ipsum")
+        val dialog = builder.create()
+        dialog.show()
+    }
 
+    private fun privacyPolicyDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Privacy Policy")
+        builder.setMessage("Lorem Ipsum")
+        val dialog = builder.create()
+        dialog.show()
     }
 }
