@@ -12,6 +12,7 @@
     <string name="start_button">Let\'s Get Started</string>
     <string name="sign_up_button">Sign Up</string>
     <string name="sign_in_button">Sign In</string>
+    <string name="verify_button">Verify</string>
 
     <!-- UTILITIES -->
     <!-- Bottom Navigation Bar -->
@@ -54,6 +55,12 @@
     <string name="sign_in_title">Welcome Back! 👋</string>
     <string name="sign_in_description">Please enter your phone number to sign in to your Lala-Bus account.</string>
     <string name="dont_have_an_account_yet">Don\'t have an account yet?</string>
+
+    <!-- OTP Verification -->
+    <string name="verification_title">Enter OTP Code 🔐</string>
+    <string name="verification_description">Check your messages! We’ve sent a one-time code to your number. Enter the code below to verify your account and continue.</string>
+    <string name="resend_code">Resend Code</string>
+
 
 
     <!-- PICTURES DESCRIPTION -->

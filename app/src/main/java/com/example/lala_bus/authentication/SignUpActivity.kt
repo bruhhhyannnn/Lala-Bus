@@ -33,7 +33,7 @@ class SignUpActivity : AppCompatActivity() {
             finish()
         }
         binding.signUpButton.setOnClickListener {
-            // OTP Code Activity
+            startActivity(Intent(this, VerificationActivity::class.java))
         }
     }
 
