@@ -13,6 +13,12 @@
     <string name="sign_up_button">Sign Up</string>
     <string name="sign_in_button">Sign In</string>
     <string name="verify_button">Verify</string>
+    <string name="commuter_button">Commuter/Passenger</string>
+    <string name="driver_button">Modern Jeep Driver</string>
+
+    <!-- PICTURES DESCRIPTION -->
+    <string name="app_logo_description">Lala-Bus Logo App</string>
+    <string name="starter_picture_description">Preview look picture of the Lala-Bus APP</string>
 
     <!-- UTILITIES -->
     <!-- Bottom Navigation Bar -->
@@ -20,13 +26,13 @@
     <string name="stations">Stations</string>
 
     <!-- MAIN -->
-
-
-    <!-- STATIONS -->
     <!-- Stations Fragment   -->
     <string name="hello">Hello,</string>
     <string name="today">Today:</string>
     <string name="user_name">{user_name}</string>
+
+    <!-- Home Fragment -->
+
 
     <!-- SPLASH ART & STARTERS -->
     <!--    Starter 1 -->
@@ -61,9 +67,7 @@
     <string name="verification_description">Check your messages! We’ve sent a one-time code to your number. Enter the code below to verify your account and continue.</string>
     <string name="resend_code">Resend Code</string>
 
-
-
-    <!-- PICTURES DESCRIPTION -->
-    <string name="app_logo_description">Lala-Bus Logo App</string>
-    <string name="starter_picture_description">Preview look picture of the Lala-Bus APP</string>
+    <!-- Start Final -->
+    <string name="start_final_title">Final Setup 🤓</string>
+    <string name="start_final_description">Are you a Passenger or Modern Jeep Operator? This tells the system that you are either of the following choices. Choose one:</string>
 </resources>

@@ -1,22 +1,20 @@
-package com.example.lala_bus.authentication
+package com.example.lala_bus.starters
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.lala_bus.R
-import com.example.lala_bus.databinding.ActivityVerificationBinding
-import com.example.lala_bus.starters.StartFinalActivity
+import com.example.lala_bus.databinding.ActivityStartFinalBinding
 
-class VerificationActivity : AppCompatActivity() {
+class StartFinalActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityVerificationBinding
+    private lateinit var binding : ActivityStartFinalBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityVerificationBinding.inflate(layoutInflater)
+        binding = ActivityStartFinalBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -25,11 +23,11 @@ class VerificationActivity : AppCompatActivity() {
             insets
         }
 
-        binding.resendCodeText.setOnClickListener {
-            // Resend Code functionality
+        binding.commuterButton.setOnClickListener {
+            // Goes to Passenger Input Form
         }
-        binding.verifyButton.setOnClickListener {
-            startActivity(Intent(this, StartFinalActivity::class.java))
+        binding.driverButton.setOnClickListener {
+            // Goes to Driver Input Form
         }
     }
 }
