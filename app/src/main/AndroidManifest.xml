@@ -15,6 +15,12 @@
         android:theme="@style/Theme.LalaBus"
         tools:targetApi="31">
         <activity
+            android:name=".input_form.InputFormDriverActivity"
+            android:exported="false" />
+        <activity
+            android:name=".input_form.InputFormCommuterActivity"
+            android:exported="false" />
+        <activity
             android:name=".starters.StartFinalActivity"
             android:exported="false" />
         <activity

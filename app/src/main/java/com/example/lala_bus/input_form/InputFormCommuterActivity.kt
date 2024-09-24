@@ -1,4 +1,4 @@
-package com.example.lala_bus.starters
+package com.example.lala_bus.input_form
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,18 +6,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.lala_bus.MainActivity
 import com.example.lala_bus.R
-import com.example.lala_bus.databinding.ActivityStartFinalBinding
-import com.example.lala_bus.input_form.InputFormCommuterActivity
-import com.example.lala_bus.input_form.InputFormDriverActivity
+import com.example.lala_bus.databinding.ActivityInputFormCommuterBinding
 
-class StartFinalActivity : AppCompatActivity() {
+class InputFormCommuterActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityStartFinalBinding
+    private lateinit var binding : ActivityInputFormCommuterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityStartFinalBinding.inflate(layoutInflater)
+        binding = ActivityInputFormCommuterBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -26,11 +25,9 @@ class StartFinalActivity : AppCompatActivity() {
             insets
         }
 
-        binding.commuterButton.setOnClickListener {
-            startActivity(Intent(this, InputFormCommuterActivity::class.java))
-        }
-        binding.driverButton.setOnClickListener {
-            startActivity(Intent(this, InputFormDriverActivity::class.java))
+        binding.continueButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }
