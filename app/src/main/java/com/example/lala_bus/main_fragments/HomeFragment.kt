@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
 import com.example.lala_bus.R
 import com.example.lala_bus.data_model.MarkerData
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -16,12 +18,24 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
 
+    private lateinit var settingsButton : ImageButton
+    private lateinit var filterButton : ImageButton
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
 
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
         mapFragment?.getMapAsync(this)
 
+        filterButton = view.findViewById(R.id.filter_button)
+        settingsButton = view.findViewById(R.id.settings_button)
+
+        filterButton.setOnClickListener {
+            Toast.makeText(context, "test filter", Toast.LENGTH_LONG).show()
+        }
+        settingsButton.setOnClickListener {
+            Toast.makeText(context, "test settings", Toast.LENGTH_LONG).show()
+        }
 
         return view
     }
@@ -34,10 +48,20 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         val defaultLatitudeLongitude = LatLng(18.059362, 120.548539)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLatitudeLongitude, 16f))
 
+        // Get station and stop point data
+        val (modernJeepStations, rotationStopPoint_PaoayLaoag, rotationStopPoint_LaoagPaoay) = getStationsLatLong()
+
+        // Add markers to the map
+        addMarkersToMap(map, modernJeepStations) // adding modern jeep stations marker
+        addMarkersToMap(map, rotationStopPoint_PaoayLaoag) // adding rotation stop points marker for Paoay-Batac-Laoag rotation
+        addMarkersToMap(map, rotationStopPoint_LaoagPaoay) // adding rotation stop points marker for Laoag-Batac-Paoay rotation
+    }
+
+    private fun getStationsLatLong(): Triple<List<MarkerData>, List<MarkerData>, List<MarkerData>> {
         // Modern Jeep Permanent Stations
         val modernJeepStations = listOf(
             MarkerData(LatLng(18.195729, 120.590441), "Laoag Modern Jeep Station"),
-            MarkerData(LatLng(18.060065, 120.520211), "Paoay Modern Jeep Station"),
+            MarkerData(LatLng(18.060065, 120.520211), "Paoay Modern Jeep Station")
         )
 
         // Rotation Stop Points (Paoay-Batac-Laoag)
@@ -65,7 +89,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             MarkerData(LatLng(18.185338, 120.588861), "Gabu Terminal, San Nicolas"),
             MarkerData(LatLng(18.179402, 120.590341), "Robinsons, San Nicolas"),
             MarkerData(LatLng(18.172419, 120.593810), "7-Eleven, San Nicolas"),
-            MarkerData(LatLng(18.140296, 120.584247), "idk what this place is called"),
+            MarkerData(LatLng(18.140296, 120.584247), "Unknown Place"),
             MarkerData(LatLng(18.136200, 120.583531), "Bingao Elementary & National High School, San Nicolas"),
             MarkerData(LatLng(18.128695, 120.579486), "Brgy. Bingao, San Nicolas"),
             MarkerData(LatLng(18.115858, 120.572473), "Baay Elementary School, Batac"),
@@ -85,10 +109,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             MarkerData(LatLng(18.060370, 120.521639), "Paoay Municipality")
         )
 
-        // Add markers to the map
-        addMarkersToMap(map, modernJeepStations) // adding modern jeep stations marker
-        addMarkersToMap(map, rotationStopPoint_PaoayLaoag) // adding rotation stop points marker for Paoay-Batac-Laoag rotation
-        addMarkersToMap(map, rotationStopPoint_LaoagPaoay) // adding rotation stop points marker for Laoag-Batac-Paoay rotation
+        return Triple(modernJeepStations, rotationStopPoint_PaoayLaoag, rotationStopPoint_LaoagPaoay)
     }
 
     private fun addMarkersToMap(map: GoogleMap, markers: List<MarkerData>) {
@@ -96,4 +117,5 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             map.addMarker(MarkerOptions().position(marker.latLng).title(marker.title))
         }
     }
+
 }

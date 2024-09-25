@@ -19,6 +19,8 @@
     <!-- PICTURES DESCRIPTION -->
     <string name="app_logo_description">Lala-Bus Logo App</string>
     <string name="starter_picture_description">Preview look picture of the Lala-Bus APP</string>
+    <string name="settings_description">Lala-Bus settings icon</string>
+    <string name="filter_description">Lala-Bus filter icon</string>
 
     <!-- UTILITIES -->
     <!-- Bottom Navigation Bar -->
