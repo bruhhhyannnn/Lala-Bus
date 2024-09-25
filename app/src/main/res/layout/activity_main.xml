@@ -24,6 +24,8 @@
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:background="@drawable/bottom_nav_bar_design"
+        app:itemTextColor="@color/default_text_color_gray"
+        app:itemIconTint="@color/default_text_color_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

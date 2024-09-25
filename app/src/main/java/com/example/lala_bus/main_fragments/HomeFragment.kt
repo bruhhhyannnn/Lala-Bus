@@ -15,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
@@ -43,7 +44,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(map: GoogleMap) {
         // Map Actions
+        map.uiSettings.isCompassEnabled = false
         map.uiSettings.isZoomControlsEnabled = true
+//        map.mapType = GoogleMap.MAP_TYPE_HYBRID  // i will fix this someday to use map type hybrid for betterness
+        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
 
         // Default Location
         val defaultLatitudeLongitude = LatLng(18.059362, 120.548539)
