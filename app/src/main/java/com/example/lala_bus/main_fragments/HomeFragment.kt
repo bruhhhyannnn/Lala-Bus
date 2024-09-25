@@ -1,14 +1,15 @@
 package com.example.lala_bus.main_fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.Toast
 import com.example.lala_bus.R
 import com.example.lala_bus.data_model.MarkerData
+import com.example.lala_bus.settings.SettingsActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -18,8 +19,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
 
-    private lateinit var settingsButton : ImageButton
     private lateinit var filterButton : ImageButton
+    private lateinit var settingsButton : ImageButton
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
@@ -31,10 +32,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         settingsButton = view.findViewById(R.id.settings_button)
 
         filterButton.setOnClickListener {
-            Toast.makeText(context, "test filter", Toast.LENGTH_LONG).show()
+            // Alert Dialog for filtering
         }
         settingsButton.setOnClickListener {
-            Toast.makeText(context, "test settings", Toast.LENGTH_LONG).show()
+            startActivity(Intent(requireContext(), SettingsActivity::class.java))
         }
 
         return view
@@ -117,5 +118,4 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             map.addMarker(MarkerOptions().position(marker.latLng).title(marker.title))
         }
     }
-
 }

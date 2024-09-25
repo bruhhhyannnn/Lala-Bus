@@ -30,11 +30,14 @@
                 android:textSize="16sp"
                 android:textColor="@color/default_text_color_black" />
 
-            <ImageView
+            <ImageButton
                 android:id="@+id/settings_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_settings" />
+                android:background="@color/white"
+                android:contentDescription="@string/settings_description"
+                android:src="@drawable/icon_settings"
+                android:foreground="?selectableItemBackground"/>
 
         </LinearLayout>
 
