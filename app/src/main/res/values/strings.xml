@@ -27,6 +27,15 @@
     <string name="home">Home</string>
     <string name="stations">Stations</string>
 
+    <!-- Custom Dialog Boxes -->
+    <string name="filters">Filters</string>
+    <string name="show_only">Show Only:</string>
+    <string name="laoag_paoay">Laoag-Paoay (via Batac) Buses</string>
+    <string name="paoay_laoag">Paoay-Laoag (via Batac) Buses</string>
+    <string name="cancel">Cancel</string>
+    <string name="apply_filter">Apply Filter</string>
+
+
     <!-- MAIN -->
     <!-- Stations Fragment   -->
     <string name="hello">Hello,</string>
@@ -80,7 +89,7 @@
     <string name="bus_details">Bus Details</string>
     <string name="plate_number">Plate Number</string>
 
-    <!-- Settings -->
+    <!-- SETTINGS -->
     <string name="settings">Settings</string>
     <string name="settings_profile">Profile</string>
     <string name="settings_location_services">Location Services</string>

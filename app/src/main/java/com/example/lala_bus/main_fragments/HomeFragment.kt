@@ -1,12 +1,18 @@
 package com.example.lala_bus.main_fragments
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.widget.CheckBox
 import android.widget.ImageButton
+import android.widget.Toast
 import com.example.lala_bus.R
 import com.example.lala_bus.data_model.MarkerData
 import com.example.lala_bus.settings.SettingsActivity
@@ -17,23 +23,46 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.button.MaterialButton
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
 
+    // Home Fragment Buttons
     private lateinit var filterButton : ImageButton
     private lateinit var settingsButton : ImageButton
+
+    // Search Bar
+    // to be added
+
+    // Filter Dialog
+    private lateinit var dialog : Dialog
+    private lateinit var cancelButton : MaterialButton
+    private lateinit var applyFilterButton : MaterialButton
+    private lateinit var laoagPaoayRotationCheckBox : CheckBox
+    private lateinit var paoayLaoagRotationCheckBox : CheckBox
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
 
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
-        mapFragment?.getMapAsync(this)
-
+        // Home Fragment Buttons
         filterButton = view.findViewById(R.id.filter_button)
         settingsButton = view.findViewById(R.id.settings_button)
 
+        // Search Bar
+        // to be added
+
+        // Setup Map Fragment
+        setupMapFragment()
+
+        // Setup Filter Dialog
+        setupFilterDialog()
+
+        // Call Checked Stations
+        checkFilteredStations(laoagPaoayRotationCheckBox, paoayLaoagRotationCheckBox)
+
+        // Fragment Buttons
         filterButton.setOnClickListener {
-            // Alert Dialog for filtering
+            showFilterDialog()
         }
         settingsButton.setOnClickListener {
             startActivity(Intent(requireContext(), SettingsActivity::class.java))
@@ -42,12 +71,47 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         return view
     }
 
+    private fun setupFilterDialog() {
+        // Filter Dialog
+        dialog = Dialog(requireContext())
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog.setCancelable(false)
+        dialog.setContentView(R.layout.custom_filter_dialog)
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        cancelButton = dialog.findViewById(R.id.cancel_button)
+        applyFilterButton = dialog.findViewById(R.id.apply_filter_button)
+        laoagPaoayRotationCheckBox = dialog.findViewById(R.id.laoag_paoay_rotation_checkbox)
+        paoayLaoagRotationCheckBox = dialog.findViewById(R.id.paoay_laoag_rotation_checkbox)
+    }
+
+    private fun checkFilteredStations(laoagPaoayRotation: CheckBox, paoayLaoagRotation: CheckBox) {
+        val laoag_paoay_checked = if (laoagPaoayRotation.isChecked) "Laoag-Paoay" else "No Filter"
+        val paoay_laoag_checked = if (paoayLaoagRotation.isChecked) "Paoay-Laoag" else "No Filter"
+        Toast.makeText(context, laoag_paoay_checked, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, paoay_laoag_checked, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showFilterDialog() {
+        cancelButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        applyFilterButton.setOnClickListener {
+            Toast.makeText(context, "Clicked Apply Filter", Toast.LENGTH_SHORT).show()
+        }
+        dialog.show()
+    }
+
+    private fun setupMapFragment() {
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
+        mapFragment?.getMapAsync(this)
+    }
+
     override fun onMapReady(map: GoogleMap) {
         // Map Actions
         map.uiSettings.isCompassEnabled = false
         map.uiSettings.isZoomControlsEnabled = true
 //        map.mapType = GoogleMap.MAP_TYPE_HYBRID  // i will fix this someday to use map type hybrid for betterness
-        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style))
+        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style)) // the mapType is overwrite by this kase
 
         // Default Location
         val defaultLatitudeLongitude = LatLng(18.059362, 120.548539)

@@ -48,10 +48,10 @@
             android:name=".starters.Starter1Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".starters.SplashArtWelcomeActivity"
             android:exported="false" />
         <activity
-            android:name=".starters.SplashArtWelcomeActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
