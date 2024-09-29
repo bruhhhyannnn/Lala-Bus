@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.CheckBox
 import android.widget.ImageButton
-import android.widget.Toast
 import com.example.lala_bus.R
 import com.example.lala_bus.data_model.LatLangData
 import com.example.lala_bus.data_model.LatLangDataModel
@@ -27,6 +26,10 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.button.MaterialButton
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
+
+    // Maps Fragment
+    private lateinit var mapFragment: SupportMapFragment
+    private lateinit var googleMap: GoogleMap
 
     // Home Fragment Buttons
     private lateinit var filterButton : ImageButton
@@ -82,60 +85,75 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         paoayLaoagRotationCheckBox = dialog.findViewById(R.id.paoay_laoag_rotation_checkbox)
     }
 
+    private fun setupMapFragment() {
+        mapFragment = (childFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment)!!
+        mapFragment.getMapAsync(this)
+    }
+
+    override fun onMapReady(map: GoogleMap) {
+        googleMap = map
+
+        // Map Actions
+        googleMap.uiSettings.isCompassEnabled = false
+        googleMap.uiSettings.isZoomControlsEnabled = true
+        // map.mapType = GoogleMap.MAP_TYPE_HYBRID  // i will fix this someday to use map type hybrid for betterness
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style)) // the mapType is overwrite by this kase
+
+        // Default Location
+        val defaultLatitudeLongitude = LatLng(18.111380, 120.570396)
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLatitudeLongitude, 12f))
+
+        // Set Marker for Permanent Modern Jeep Stations
+        val modernJeepStations = LatLangData.modernJeepStations
+        addMarkersToMap(modernJeepStations)
+
+        // Check Filtered Stations
+        checkFilteredStations()
+    }
+
     private fun showFilterDialog() {
         cancelButton.setOnClickListener {
             dialog.dismiss()
         }
         applyFilterButton.setOnClickListener {
-            Toast.makeText(context, "Clicked Apply Filter", Toast.LENGTH_SHORT).show()
+            checkFilteredStations()
+            dialog.dismiss()
         }
         dialog.show()
     }
 
-    private fun setupMapFragment() {
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map_fragment) as? SupportMapFragment
-        mapFragment?.getMapAsync(this)
-    }
+     private fun checkFilteredStations() {
+        val laoagPaoayRotation = laoagPaoayRotationCheckBox.isChecked
+        val paoayLaoagRotation = paoayLaoagRotationCheckBox.isChecked
+        val laoagPaoayStopPoints = LatLangData.laoagPaoayStopPoints
+        val paoayLaoagStopPoints = LatLangData.paoayLaoagStopPoints
 
-    override fun onMapReady(map: GoogleMap) {
-        // Map Actions
-        map.uiSettings.isCompassEnabled = false
-        map.uiSettings.isZoomControlsEnabled = true
-        // map.mapType = GoogleMap.MAP_TYPE_HYBRID  // i will fix this someday to use map type hybrid for betterness
-        map.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(), R.raw.map_style)) // the mapType is overwrite by this kase
-
-        // Default Location
-        val defaultLatitudeLongitude = LatLng(18.111380, 120.570396)
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLatitudeLongitude, 12f))
-
-        // Check Filtered Stations
-        checkFilteredStations()
-
-        // Get station and stop point data
-        val (modernJeepStations, rotationStopPoint_LaoagPaoay, rotationStopPoint_PaoayLaoag) = getStationsLatLong()
-
-        // Add markers to the map
-        addMarkersToMap(map, modernJeepStations) // adding modern jeep stations marker
-        addMarkersToMap(map, rotationStopPoint_LaoagPaoay) // adding rotation stop points marker for Laoag-Batac-Paoay rotation
-        addMarkersToMap(map, rotationStopPoint_PaoayLaoag) // adding rotation stop points marker for Paoay-Batac-Laoag rotation
-    }
-
-    private fun getStationsLatLong(): Triple<List<LatLangDataModel>, List<LatLangDataModel>, List<LatLangDataModel>> {
-        val modernJeepStations = LatLangData.modernJeepStations
-        val rotationStopPoints_LaoagPaoay = LatLangData.rotationStopPoint_LaoagPaoay
-        val rotationStopPoints_PaoayLaoag = LatLangData.rotationStopPoint_PaoayLaoag
-
-        return Triple(modernJeepStations, rotationStopPoints_LaoagPaoay, rotationStopPoints_PaoayLaoag)
-    }
-
-    private fun addMarkersToMap(map: GoogleMap, markers: List<LatLangDataModel>) {
-        for (marker in markers) {
-            map.addMarker(MarkerOptions().position(marker.latLng).title(marker.title))
+        if (laoagPaoayRotation) {
+            addMarkersToMap(laoagPaoayStopPoints) // adding rotation stop points marker for Laoag-Batac-Paoay rotation
+        }
+        if (paoayLaoagRotation) {
+            addMarkersToMap(paoayLaoagStopPoints) // adding rotation stop points marker for Paoay-Batac-Laoag rotation
+        }
+        if (!laoagPaoayRotation) {
+            removeMarkersToMap(laoagPaoayStopPoints) // removing rotation stop points marker for Paoay-Batac-Laoag rotation
+        }
+         if (!paoayLaoagRotation) {
+             removeMarkersToMap(paoayLaoagStopPoints) // removing rotation stop points marker for Paoay-Batac-Laoag rotation
         }
     }
 
-    private fun checkFilteredStations() {
-//        val laoagPaoayRotation = laoagPaoayRotationCheckBox.isChecked
-//        val paoayLaoagRotation = paoayLaoagRotationCheckBox.isChecked
+    private fun addMarkersToMap(markers: List<LatLangDataModel>) {
+        for (markerData in markers) {
+            if (markerData.marker == null) { // Only add if marker is not already on the map
+                markerData.marker = googleMap.addMarker(MarkerOptions().position(markerData.latLng).title(markerData.title))
+            }
+        }
+    }
+
+    private fun removeMarkersToMap(markers: List<LatLangDataModel>) {
+        for (markerData in markers) {
+            markerData.marker?.remove()
+            markerData.marker = null
+        }
     }
 }

@@ -12,7 +12,7 @@ object LatLangData {
     )
 
     // Rotation Stop Points (Laoag-Batac-Paoay)
-    val rotationStopPoint_LaoagPaoay = listOf(
+    val laoagPaoayStopPoints = listOf(
         LatLangDataModel(LatLng(18.186152, 120.588687), "Before Bridge of Laoag City"),
         LatLangDataModel(LatLng(18.179402, 120.590341), "Robinsons Ilocos, San Nicolas"),
         LatLangDataModel(LatLng(18.172783, 120.593965), "San Nicolas Municipality"),
@@ -40,7 +40,7 @@ object LatLangData {
     )
 
     // Rotation Stop Points (Paoay-Batac-Laoag)
-    val rotationStopPoint_PaoayLaoag = listOf(
+    val paoayLaoagStopPoints = listOf(
         LatLangDataModel(LatLng(18.060268, 120.521710), "7-Eleven (Centro), Paoay"),
         LatLangDataModel(LatLng(18.061411, 120.522567), "Paoay Church"),
         LatLangDataModel(LatLng(18.061446, 120.524006), "Salbang, Paoay"),
