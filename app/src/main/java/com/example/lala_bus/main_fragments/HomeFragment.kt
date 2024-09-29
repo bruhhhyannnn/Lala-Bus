@@ -91,7 +91,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
     }
 
     override fun onMapReady(map: GoogleMap) {
-        googleMap = map
+        googleMap = map // initialization of the GoogleMap
 
         // Map Actions
         googleMap.uiSettings.isCompassEnabled = false
@@ -107,8 +107,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         val modernJeepStations = LatLangData.modernJeepStations
         addMarkersToMap(modernJeepStations)
 
-        // Check Filtered Stations
-        checkFilteredStations()
+        checkFilteredStations() // Check on the filtered stations when first running the app
     }
 
     private fun showFilterDialog() {
@@ -137,14 +136,14 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
         if (!laoagPaoayRotation) {
             removeMarkersToMap(laoagPaoayStopPoints) // removing rotation stop points marker for Paoay-Batac-Laoag rotation
         }
-         if (!paoayLaoagRotation) {
-             removeMarkersToMap(paoayLaoagStopPoints) // removing rotation stop points marker for Paoay-Batac-Laoag rotation
+        if (!paoayLaoagRotation) {
+            removeMarkersToMap(paoayLaoagStopPoints) // removing rotation stop points marker for Paoay-Batac-Laoag rotation
         }
     }
 
     private fun addMarkersToMap(markers: List<LatLangDataModel>) {
         for (markerData in markers) {
-            if (markerData.marker == null) { // Only add if marker is not already on the map
+            if (markerData.marker == null) {
                 markerData.marker = googleMap.addMarker(MarkerOptions().position(markerData.latLng).title(markerData.title))
             }
         }
