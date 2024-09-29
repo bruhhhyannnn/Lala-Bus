@@ -3,6 +3,7 @@ package com.example.lala_bus.starters
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -20,13 +21,10 @@ class SplashArtWelcomeActivity : AppCompatActivity() {
             insets
         }
 
-        startActivity(Intent(this@SplashArtWelcomeActivity, Starter1Activity::class.java))
-        finish()
-
         // Commenting this for now so that it is faster to develop
-//        Handler().postDelayed({
-//            startActivity(Intent(this@SplashArtWelcomeActivity, Starter1Activity::class.java))
-//            finish()
-//        }, 1000)
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this@SplashArtWelcomeActivity, Starter1Activity::class.java))
+            finish()
+        }, 1000)
     }
 }
