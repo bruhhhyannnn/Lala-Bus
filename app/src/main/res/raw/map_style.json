@@ -1,28 +1,58 @@
 [
   {
-    "featureType": "road.arterial",
+    "featureType": "landscape.natural",
     "elementType": "geometry.fill",
     "stylers": [
       {
-        "color": "#0d85d8"
+        "visibility": "on"
       },
       {
-        "visibility": "on"
+        "color": "#e0efef"
       }
     ]
   },
   {
-    "featureType": "road.arterial",
-    "elementType": "geometry.stroke",
+    "featureType": "poi",
+    "elementType": "all",
     "stylers": [
       {
-        "color": "#9ed7ff"
-      },
+        "visibility": "simplified"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry.fill",
+    "stylers": [
       {
         "visibility": "on"
       },
       {
-        "weight": 5
+        "color": "#c0e8e8"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "lightness": 100
+      },
+      {
+        "visibility": "simplified"
+      },
+      {
+        "color": "#aedee4"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -31,10 +61,10 @@
     "elementType": "geometry.fill",
     "stylers": [
       {
-        "color": "#0d85d8"
+        "visibility": "on"
       },
       {
-        "visibility": "on"
+        "color": "#91d9ff"
       }
     ]
   },
@@ -43,22 +73,49 @@
     "elementType": "geometry.stroke",
     "stylers": [
       {
-        "color": "#9ed7ff"
+        "color": "#00adff"
       },
       {
         "visibility": "on"
       },
       {
-        "weight": 4.5
+        "weight": "1.90"
       }
     ]
   },
   {
-    "featureType": "road.local",
+    "featureType": "road.arterial",
     "elementType": "geometry.fill",
     "stylers": [
       {
         "visibility": "on"
+      },
+      {
+        "color": "#91d9ff"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {
+        "color": "#00adff"
+      },
+      {
+        "weight": "1.90"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "all",
+    "stylers": [
+      {
+        "color": "#7dcdcd"
       }
     ]
   }
